@@ -1,0 +1,39 @@
+---
+- name: install development tools
+  apt:
+    pkg: [ 'zsh', 'tree', 'build-essential' ]
+    state: latest
+  become: yes
+
+- name: install c++ development tools
+  apt:
+    pkg: [ 'cmake', 'clang', 'clang-format', 'cppcheck',  'libboost-all-dev']
+    state: latest
+  become: yes
+
+- name: install document toosl
+  apt:
+    pkg: [ 'graphviz', 'imagemagick' ]
+    state: latest
+  become: yes
+
+- name: install python tools
+  apt:
+    pkg: [ 'python3-pip' ]
+    state: latest
+  become: yes
+
+- name: install pip tools
+  pip:
+    name: 
+      - tdqm
+      - pydot
+      - matplotlib
+    executable: pip3
+  become: yes
+
+- name: git clone
+  ansible.builtin.git:
+    repo: https://github.com/anyenv/anyenv
+    dest: ~/.anyenv
+

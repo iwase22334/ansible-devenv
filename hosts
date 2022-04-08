@@ -1,0 +1,6 @@
+[ubuntu20-devcli]
+localhost ansible_connection=local
+
+[ubuntu20-server]
+192.168.11.13
+

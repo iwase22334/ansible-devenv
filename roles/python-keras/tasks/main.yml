@@ -1,9 +1,8 @@
 ---
 - name: Install pip managed applications
   pip:
-    name: 
+    name:
       - tensorflow
       - keras
     executable: pip3
     state: latest
-

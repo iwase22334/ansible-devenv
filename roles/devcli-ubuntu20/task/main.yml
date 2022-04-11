@@ -1,39 +1,66 @@
 ---
 - name: install development tools
   apt:
-    pkg: [ 'zsh', 'tree', 'build-essential' ]
+    pkg: ['zsh', 'tree', 'build-essential', 'nodejs']
     state: latest
-  become: yes
+  become: true
 
 - name: install c++ development tools
   apt:
-    pkg: [ 'cmake', 'clang', 'clang-format', 'cppcheck',  'libboost-all-dev']
+    pkg:
+      - cmake
+      - clang
+      - clang-format
+      - clang-tidy
+      - cppcheck
+      - libboost-all-dev
     state: latest
-  become: yes
+  become: true
 
 - name: install document toosl
   apt:
-    pkg: [ 'graphviz', 'imagemagick' ]
+    pkg: ['graphviz', 'imagemagick']
     state: latest
-  become: yes
+  become: true
 
 - name: install python tools
   apt:
-    pkg: [ 'python3-pip' ]
+    pkg: ['python3-pip']
     state: latest
-  become: yes
+  become: true
 
-- name: install pip tools
+- name: install pip util
   pip:
-    name: 
+    name:
       - tdqm
       - pydot
       - matplotlib
     executable: pip3
-  become: yes
+
+- name: install syntax checker - apt
+  apt:
+    pkg:
+      - shellcheck
+    state: latest
+  become: true
+
+- name: install syntax checker - npm
+  npm:
+    name:
+      - jsonlint
+    global: true
+  become: true
+
+- name: install syntax checker - pip
+  pip:
+    name:
+      - yamllint
+      - flake8     # syntax check
+      - mypy-lang  # static type checker
+      - jedi       # auto completion engine
+    executable: pip3
 
 - name: git clone
   ansible.builtin.git:
     repo: https://github.com/anyenv/anyenv
     dest: ~/.anyenv
-

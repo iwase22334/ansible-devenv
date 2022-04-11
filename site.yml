@@ -1,11 +1,10 @@
 ---
 
-- hosts: ubuntu20-devcli 
-  roles: 
+- hosts: ubuntu20-devcli
+  roles:
     - devcli-ubuntu20
-    - controller
 
-- hosts: ubuntu20-server 
-  roles: 
+- hosts: ubuntu20-server
+  roles:
     - docker-ubuntu20
     - localstack

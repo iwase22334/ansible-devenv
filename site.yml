@@ -1,6 +1,6 @@
 ---
 
-- hosts: ubuntu20-devcli
+- hosts: devcli
   roles:
     - devcli-ubuntu20
 

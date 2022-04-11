@@ -1,7 +1,7 @@
 ---
 - name: install development tools
   apt:
-    pkg: ['zsh', 'tree', 'build-essential', 'nodejs']
+    pkg: ['zsh', 'tree', 'build-essential', 'nodejs', 'npm']
     state: latest
   become: true
 
@@ -46,8 +46,7 @@
 
 - name: install syntax checker - npm
   npm:
-    name:
-      - jsonlint
+    name: jsonlint
     global: true
   become: true
 

@@ -57,6 +57,7 @@
       - flake8     # syntax check
       - mypy-lang  # static type checker
       - jedi       # auto completion engine
+      - yapf
     executable: pip3
 
 - name: git clone
